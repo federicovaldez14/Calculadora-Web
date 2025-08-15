@@ -1,0 +1,151 @@
+/* Variables de temas */
+:root {
+    --fondo-brillante: #f7f7f7;
+    --fondo-oscuro: #232323;
+    --texto-brillante: #232323;
+    --texto-oscuro: #f7f7f7;
+    --boton-num: #f7f7f7;
+    --boton-num-dark: #232323;
+    --boton-op-brillante: #d7d7d7;
+    --boton-op-oscuro: rgb(55, 55, 55);
+    --boton-ac-eq: linear-gradient(135deg, #ff6a88 0%, #ffcc70 100%);
+    --borde: #cccccc;
+}
+
+body[data-tema="brillante"] {
+    background: var(--fondo-brillante);
+    color: var(--texto-brillante);
+}
+
+body[data-tema="oscuro"] {
+    background: var(--fondo-oscuro);
+    color: var(--texto-oscuro);
+}
+
+header, footer {
+    text-align: center;
+    margin-bottom: 1em;
+}
+
+#Calculadora {
+    max-width: 350px;
+    margin: 2em auto;
+    padding: 2em;
+    border-radius: 20px;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.12);
+    background: inherit;
+}
+
+#resultado {
+    width: 100%;
+    font-size: 2.2em;
+    padding: 0.7em;
+    margin-bottom: 1em;
+    border-radius: 10px;
+    border: 2px solid var(--borde);
+    background: inherit;
+    color: inherit;
+    text-align: right;
+    letter-spacing: 2px;
+    box-sizing: border-box;
+}
+
+#botonnum\/ops {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+    gap: 0.7em;
+}
+
+/* Botones circulares */
+button {
+    font-size: 1.2em;
+    padding: 0.7em 0;
+    border: none;
+    border-radius: 50px; /* Hace los botones circulares */
+    cursor: pointer;
+    transition: transform 0.1s, box-shadow 0.1s;
+    width: 80px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+body[data-tema="brillante"] button {
+    background: var(--boton-num);
+    color: var(--texto-brillante);
+}
+body[data-tema="brillante"] button[onclick^="setOperacion"] {
+    background: var(--boton-op-brillante);
+}
+body[data-tema="oscuro"] button {
+    background: var(--boton-num-dark);
+    color: var(--texto-oscuro);
+}
+
+/* Botones de operaciones */
+body[data-tema="oscuro"] button[onclick^="setOperacion"] {
+    background: var(--boton-op-oscuro);
+}
+
+/* Botón AC y = */
+button[onclick="limpiar()"] {
+    font-weight: bold;
+}
+
+/* Botón "=": fondo multicolor, texto blanco */
+#igual-btn,
+button[onclick="calcular()"] {
+    background: var(--boton-ac-eq);
+    color: #fff;
+    font-weight: bold;
+    box-shadow: 0 4px 16px rgba(255,106,136,0.15);
+}
+
+/* Botones de tema */
+button[onclick^="cambiarcolor"] {
+    background: transparent;
+    font-size: 1.5em;
+    box-shadow: none;
+}
+
+/* Efecto al presionar */
+button:active {
+    transform: scale(0.97);
+    box-shadow: 0 1px 4px rgba(0,0,0,0.15);
+}
+
+
+#operacion-anterior {
+    min-height: 1.5em;
+    font-size: 1.1em;
+    color: #888;
+    text-align: right;
+    margin-bottom: 0.3em;
+    letter-spacing: 1px;
+    overflow-x: auto;
+}
+
+/* Botón de tema único */
+#tema-btn {
+    background: transparent;
+    font-size: 1.7em;
+    border: none;
+    box-shadow: none;
+    cursor: pointer;
+    float: right;
+    margin-bottom: 0.5em;
+}
+
+#igual-btn {
+    grid-column: 4;
+    grid-row: 4 / span 2;
+    height: 100%;
+    border-radius: 50px; /* Ovalado vertical */
+    aspect-ratio: auto; /* Permite que sea ovalado */
+    font-size: 1.5em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

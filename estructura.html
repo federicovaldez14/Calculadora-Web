@@ -3,41 +3,46 @@
 <head>
     <meta charset="UTF-8">
     <title>Calculadora Web</title>
-    <link rel="CONTENIDO-INTERACCION" href="interactivo.js">
+    <link rel="stylesheet" href="estilo.css">
+    <script src="interactivo.js" defer></script>
 </head>
 <body>
     <header>
         <h1>Calculadora Web</h1>
     </header>
     <main>
-        <section id="   Calculadora">
+        <section id="Calculadora">
+            <div id="operacion-anterior"></div>
             <input type="text" id="resultado" disabled>
             <div id="botonnum/ops">
-                <button onclick="cambiarcolor('🌙')">🌙</button>
-                <button onclick="cambiarcolor('☀️')">☀️</button>
+                <button id="tema-btn" onclick="cambiarcolor()">🌙</button>
                 <button onclick="setOperacion('%')">%</button>
                 <button onclick="setOperacion('÷')">÷</button>
                 <button onclick="setOperacion('X')">X</button>
+
                 <button onclick="agregarNumero('7')">7</button>
                 <button onclick="agregarNumero('8')">8</button>
                 <button onclick="agregarNumero('9')">9</button>
                 <button onclick="setOperacion('-')">-</button>
+
                 <button onclick="agregarNumero('4')">4</button>
                 <button onclick="agregarNumero('5')">5</button>
                 <button onclick="agregarNumero('6')">6</button>
                 <button onclick="setOperacion('+')">+</button>
-                <button onclick="agregarNumero('3')">3</button>
-                <button onclick="agregarNumero('2')">2</button>
+
                 <button onclick="agregarNumero('1')">1</button>
+                <button onclick="agregarNumero('2')">2</button>
+                <button onclick="agregarNumero('3')">3</button>
+                <button onclick="calcular()" id="igual-btn" style="grid-row: 4 / span 2;">=</button>
+
                 <button onclick="limpiar()">AC</button>
+                <button onclick="agregarNumero('0')">0</button>
                 <button onclick="agregarPunto('.')">.</button>
-                <button onclick="calcular()">=</button>
             </div>
         </section>
     </main>
     <footer>
-        <p>© Calculadora Web Huawei</p>
+        <p>© Calculadora Web</p>
     </footer>
-    <interactivo src="interactivo.js"></interactivo>
 </body>
 </html>
