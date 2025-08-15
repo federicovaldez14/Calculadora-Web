@@ -1,24 +1,30 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <title>Calculadora Web</title>
     <link rel="stylesheet" href="estilo.css">
     <script src="interactivo.js" defer></script>
 </head>
+
 <body>
+    
     <header>
         <h1>Calculadora Web</h1>
     </header>
     <main>
         <section id="Calculadora">
+            
+            <div id="historial"></div>
+
             <div id="operacion-anterior"></div>
             <input type="text" id="resultado" disabled>
             <div id="botonnum/ops">
                 <button id="tema-btn" onclick="cambiarcolor()">🌙</button>
                 <button onclick="setOperacion('%')">%</button>
                 <button onclick="setOperacion('÷')">÷</button>
-                <button onclick="setOperacion('X')">X</button>
+                <button onclick="setOperacion('×')">×</button>
 
                 <button onclick="agregarNumero('7')">7</button>
                 <button onclick="agregarNumero('8')">8</button>
@@ -42,7 +48,10 @@
         </section>
     </main>
     <footer>
-        <p>© Calculadora Web</p>
+        <p>© Calculadora Web
+        <div>ANDRESDAZA/FEDERICOVALDEZ</div>
+        </p>
     </footer>
 </body>
+
 </html>

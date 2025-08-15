@@ -5,7 +5,6 @@ let resultado = document.getElementById('resultado');
 let operacionAnterior = document.getElementById('operacion-anterior');
 let temaBtn = document.getElementById('tema-btn');
 
-// Tema por defecto
 let temaActual = 'brillante';
 document.body.setAttribute('data-tema', temaActual);
 temaBtn.textContent = '🌙';
@@ -57,29 +56,58 @@ function limpiar() {
 }
 
 function calcular() {
+
+     if (valorAnterior === '' || valorActual === '') return;
+
     let a = parseFloat(valorAnterior);
+    var operacionTexto = `${valorAnterior}`;
+    operacionAnterior.textContent = operacionTexto;
     let b = parseFloat(valorActual);
+    var operacionTexto = `${valorActual}`;
+    operacionAnterior.textContent = operacionTexto;
     let res = 0;
-    let operacionTexto = `${valorAnterior} ${operacion} ${valorActual}`;
+    var operacionTexto = `${valorAnterior} ${operacion} ${valorActual}`;
     switch (operacion) {
         case '+': res = a + b; break;
         case '-': res = a - b; break;
-        case 'X': res = a * b; break;
+        case '×': res = a * b; break;
         case '÷': res = b !== 0 ? a / b : 'Error'; break;
         case '%': res = a % b; break;
         default: res = valorActual;
     }
-    resultado.value = (typeof res === 'number' && !isNaN(res)) ? res.toString().slice(0,12) : res;
+    resultado.value = (typeof res === 'number' && !isNaN(res)) 
+    ? res.toString().slice(0, 12) 
+    : res;
+
     operacionAnterior.textContent = operacionTexto;
-    valorActual = resultado.value;
+    AgregaralHistorial(operacionAnterior,resultado)
+
+
+    valorAnterior = resultado.value;
+    valorActual = '';
     operacion = '';
-    valorAnterior = '';
 }
 
 function actualizarDisplay() {
     resultado.value = valorActual;
+
+    if(valorAnterior !='' && operacion != ''){
+        operacionAnterior.textContent = `${valorAnterior} ${operacion} ${valorActual}`;
+    }else {
+        operacionAnterior.textContent=valorActual;
+}
+}
+function AgregaralHistorial(operacionTexto,resultadoValor){
+    historial.push(`${operacionTexto} = ${resultadoValor}`);
+    mostrarHistorial();
 }
 
-// Inicializa display vacío
-actualizarDisplay();
-operacionAnterior.textContent = '';
+function mostrarHistorial(){
+    let historiaDiv =  document.getElementById('historial');
+    let html = "";
+        for (let item of historial) {
+        html += `<div>${item}</div>`;
+    }
+        historiaDiv.innerHTML = html;
+}
+    
